@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <title>All Shows</title>
+</head>
+<body>
+    <h1>All Shows</h1>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Title</th>
+                <th scope="col">Network</th>
+                <th scope="col">Release Date</th>
+                <th scope="col">Actions</th>
+                </tr>   
+            </tr>
+        </thead>
+        <tbody>
+            {% for shows in shows %}
+            <tr scope="row">
+                <td>{{ shows.id }}</td>
+                <td>{{ shows.title }}</td>
+                <td>{{ shows.network }}</td>
+                <td>{{ shows.release_date }}</td>
+                <td><a href="/shows/{{ shows.id }}">Show</a>  |  <a href="/shows/edit/{{ shows.id }}">Edit</a>  |  <a href="/shows/delete/{{ shows.id }}">Delete</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="/shows/new">Add a New Show</a>
+</body>
+</html>
